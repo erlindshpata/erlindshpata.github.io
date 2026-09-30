@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://erlindshpata.github.io/sitemap.xml
