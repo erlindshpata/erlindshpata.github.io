@@ -50,7 +50,7 @@ export const skillGroups = [
   },
   {
     name: "Data",
-    items: ["PostgreSQL", "MySQL", "Firestore", "DynamoDB", "RabbitMQ", "PDF extraction"],
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Firestore", "DynamoDB", "RabbitMQ", "PDF extraction"],
   },
   {
     name: "Cloud & delivery",

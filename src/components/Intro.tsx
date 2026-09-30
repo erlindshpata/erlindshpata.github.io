@@ -44,14 +44,16 @@ export function Intro() {
 
   return (
     <section id="top" className="px-4 pb-20 pt-10 sm:px-6 md:px-10 lg:px-14 lg:pb-28 lg:pt-16">
-      <p className="label animate-[fadeUp_600ms_both]">
-        <span className="text-accent">●</span> {profile.shortTitle} at {profile.currentCompany} · {profile.location}
-      </p>
+      <div className="flex items-baseline gap-2 animate-[fadeUp_600ms_both]">
+        <span aria-hidden className="text-[11px] text-accent">●</span>
+        <h1 className="label">
+          {profile.name} · {profile.title} · {profile.location}
+        </h1>
+      </div>
 
-      <h1 className="mt-6 max-w-4xl font-serif text-[clamp(2.9rem,7vw,6rem)] leading-[0.95] tracking-[-0.015em] text-balance animate-[fadeUp_700ms_80ms_both]">
-        <span className="sr-only">Erlind Shpata. </span>
+      <p className="mt-6 max-w-4xl font-serif text-[clamp(2.9rem,7vw,6rem)] leading-[0.95] tracking-[-0.015em] text-balance animate-[fadeUp_700ms_80ms_both]">
         I build AI that <em className="text-accent">shows its sources</em>, and holds up in production.
-      </h1>
+      </p>
 
       <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted text-pretty animate-[fadeUp_700ms_160ms_both]">
         I lead AI and backend engineering at ReN, a financial intelligence platform built on a domain-specific language

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&display=block" rel="stylesheet" />
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; background: #13120F; color: #EDE8DD; font-family: "IBM Plex Sans", sans-serif; overflow: hidden; position: relative; }
+  .frame { position: absolute; inset: 40px; border: 1px solid #302D27; border-radius: 28px; padding: 56px 64px; display: flex; flex-direction: column; justify-content: space-between; }
+  .label { font-family: "IBM Plex Mono", monospace; font-size: 18px; letter-spacing: .16em; text-transform: uppercase; color: #8A8377; }
+  .label b { color: #FB923C; font-weight: 500; }
+  h1 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 118px; line-height: .92; letter-spacing: -.01em; }
+  h1 span { color: #FB923C; }
+  .role { font-family: "Instrument Serif", serif; font-style: italic; font-size: 40px; color: #A8A092; margin-top: 18px; }
+  .foot { display: flex; justify-content: space-between; align-items: flex-end; }
+  .tags { font-family: "IBM Plex Mono", monospace; font-size: 20px; color: #A8A092; }
+  .bars { display: flex; flex-direction: column; gap: 10px; width: 330px; }
+  .bar { height: 16px; border-radius: 4px; background: #2A2722; position: relative; }
+  .bar i { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <p class="label"><b>●</b> erlindshpata.github.io</p>
+    <div>
+      <h1>Erlind Shpata<span>.</span></h1>
+      <p class="role">Technical Lead, AI &amp; LLM Engineering</p>
+    </div>
+    <div class="foot">
+      <p class="tags">RAG · DSLM fine-tuning · MCP agents · Google Cloud</p>
+      <div class="bars" aria-hidden="true">
+        <div class="bar"><i style="left:0;width:7%;background:#5EEAD4"></i></div>
+        <div class="bar"><i style="left:7%;width:15%;background:#5EEAD4;opacity:.8"></i></div>
+        <div class="bar"><i style="left:22%;width:78%;background:#FB923C"></i></div>
+        <div class="bar"><i style="left:31%;width:69%;background:#5EEAD4;opacity:.8"></i></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
