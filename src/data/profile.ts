@@ -15,6 +15,7 @@ export const profile = {
   currentCompany: "ReN",
   location: "Tirana, Albania",
   timezone: "UTC +02:00",
+  timeZoneId: "Europe/Tirane",
   email: "erlindshpata@gmail.com",
   website: "https://erlindshpata.github.io",
   social: {
@@ -196,4 +197,13 @@ export const projects: Project[] = [
     url: "https://github.com/erlindshpata/budgetBuddy",
     linkLabel: "Source",
   },
+];
+
+export const sections = [
+  { id: "about", label: "About" },
+  { id: "approach", label: "Approach" },
+  { id: "experience", label: "Experience" },
+  { id: "stack", label: "Stack" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
 ];

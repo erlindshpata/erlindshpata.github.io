@@ -4,40 +4,49 @@ import { Section } from "./Section";
 
 export function Experience() {
   return (
-    <Section id="experience" index="04" eyebrow="Experience" title="Where I've built.">
-      <ol className="border-t border-line">
+    <Section
+      id="experience"
+      index="03"
+      eyebrow="Experience"
+      title={
+        <>
+          Seven years, <em className="text-accent">three chapters</em>.
+        </>
+      }
+    >
+      <ol className="relative border-l border-line pl-6 sm:pl-10">
         {experience.map((e, i) => (
           <Reveal key={e.role + e.company} delay={i * 60}>
-            <li className="grid gap-4 border-b border-line py-10 md:grid-cols-12 md:gap-8">
-              <div className="md:col-span-4">
-                <p className="font-mono text-sm text-accent">{e.period}</p>
-                <p className="mt-2 text-sm text-muted">{e.location}</p>
-              </div>
-              <div className="md:col-span-8">
-                <h3 className="font-display text-2xl font-semibold tracking-tight">{e.role}</h3>
-                <p className="mt-1 text-muted">{e.company}</p>
-                {e.note && <p className="mt-1 text-sm italic text-subtle">{e.note}</p>}
-                <p className="mt-4 leading-relaxed text-muted text-pretty">{e.summary}</p>
-                {e.highlights && (
-                  <ul className="mt-5 space-y-2.5">
-                    {e.highlights.map((h) => (
-                      <li key={h.slice(0, 32)} className="flex gap-3 leading-relaxed text-muted">
-                        <span aria-hidden className="mt-[0.7em] h-1 w-3 shrink-0 rounded-full bg-accent" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {e.stack && (
-                  <ul className="mt-6 flex flex-wrap gap-2" aria-label="Stack">
-                    {e.stack.map((s) => (
-                      <li key={s} className="chip">
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+            <li className={`relative ${i < experience.length - 1 ? "pb-16" : ""}`}>
+              <span
+                aria-hidden
+                className={`absolute -left-[31px] top-2 h-3 w-3 rounded-full border-2 sm:-left-[47px] ${
+                  i === 0 ? "border-accent bg-accent" : "border-line bg-bg"
+                }`}
+              />
+              <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent">
+                {e.period} <span className="text-subtle">· {e.location}</span>
+              </p>
+              <h3 className="mt-3 font-serif text-[2rem] leading-tight">{e.role}</h3>
+              <p className="mt-1 text-muted">{e.company}</p>
+              {e.note && <p className="mt-1 font-mono text-xs text-subtle">↳ {e.note}</p>}
+              <p className="mt-5 max-w-3xl text-[17px] leading-relaxed text-muted text-pretty">{e.summary}</p>
+              {e.highlights && (
+                <ul className="mt-6 max-w-3xl divide-y divide-line border-y border-line">
+                  {e.highlights.map((h, j) => (
+                    <li key={h.slice(0, 32)} className="flex gap-4 py-3.5 text-[15px] leading-relaxed text-muted">
+                      <span className="shrink-0 font-mono text-xs leading-6 text-subtle">{String(j + 1).padStart(2, "0")}</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {e.stack && (
+                <p className="mt-5 font-mono text-xs leading-relaxed text-subtle">
+                  <span className="text-muted">stack ▸ </span>
+                  {e.stack.join(" / ")}
+                </p>
+              )}
             </li>
           </Reveal>
         ))}

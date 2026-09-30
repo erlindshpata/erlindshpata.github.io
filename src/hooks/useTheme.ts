@@ -11,7 +11,7 @@ export function useTheme() {
     document.documentElement.dataset.theme = theme;
     document
       .querySelectorAll('meta[name="theme-color"]')
-      .forEach((m) => m.setAttribute("content", theme === "dark" ? "#0B1120" : "#F8FAFC"));
+      .forEach((m) => m.setAttribute("content", theme === "dark" ? "#13120F" : "#F3EFE6"));
   }, [theme]);
 
   const toggle = useCallback(() => {

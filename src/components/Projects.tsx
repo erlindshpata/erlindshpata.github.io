@@ -1,71 +1,53 @@
-import { FiArrowUpRight, FiGithub } from "react-icons/fi";
-import { projects, type Project } from "../data/profile";
+import { FiArrowUpRight } from "react-icons/fi";
+import { projects } from "../data/profile";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
-function ProjectCard({ p }: { p: Project }) {
-  const isRepo = p.url.includes("github.com");
-  return (
-    <a
-      href={p.url}
-      target="_blank"
-      rel="noreferrer"
-      className={`group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-line bg-surface p-6 transition-colors duration-200 hover:border-accent/60 md:p-8 ${
-        p.featured ? "md:min-h-[320px]" : ""
-      }`}
-    >
-      {p.featured && (
-        <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
-      )}
-      <div className="relative flex items-start justify-between gap-4">
-        <p className="label">{p.kind}</p>
-        <span className="inline-flex shrink-0 items-center gap-1.5 text-sm text-muted transition-colors duration-200 group-hover:text-accent">
-          {isRepo && <FiGithub size={15} aria-hidden />}
-          {p.linkLabel}
-          <FiArrowUpRight
-            size={16}
-            aria-hidden
-            className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          />
-        </span>
-      </div>
-      <h3 className={`relative mt-6 font-display font-semibold tracking-tight ${p.featured ? "text-4xl md:text-5xl" : "text-2xl"}`}>
-        {p.title}
-      </h3>
-      <p className={`relative mt-4 leading-relaxed text-muted text-pretty ${p.featured ? "max-w-2xl text-lg" : ""}`}>
-        {p.description}
-      </p>
-      <ul className="relative mt-auto flex flex-wrap gap-2 pt-6" aria-label="Technologies">
-        {p.tags.map((t) => (
-          <li key={t} className="chip">
-            {t}
-          </li>
-        ))}
-      </ul>
-    </a>
-  );
-}
-
 export function Projects() {
-  const [featured, ...rest] = projects;
   return (
     <Section
       id="projects"
       index="05"
       eyebrow="Projects"
-      title="Selected work."
-      intro="My day job, plus the agents and apps I build outside it to try out new ideas."
+      title={
+        <>
+          Selected <em className="text-accent">work</em>.
+        </>
+      }
+      intro="My day job, plus the agents and apps I build to try out new ideas."
     >
-      <div className="grid gap-4 md:grid-cols-3">
-        <Reveal className="md:col-span-3">
-          <ProjectCard p={featured} />
-        </Reveal>
-        {rest.map((p, i) => (
-          <Reveal key={p.title} delay={i * 80} className="h-full">
-            <ProjectCard p={p} />
+      <ol className="border-t border-line">
+        {projects.map((p, i) => (
+          <Reveal key={p.title} delay={i * 60}>
+            <li className="border-b border-line">
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group -mx-4 grid cursor-pointer gap-4 rounded-2xl px-4 py-8 transition-colors duration-200 hover:bg-surface sm:grid-cols-[64px_1fr_auto] sm:gap-6"
+              >
+                <span className="font-mono text-xs text-subtle sm:pt-3">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                    <h3 className="font-serif text-4xl leading-none transition-colors duration-200 group-hover:text-accent md:text-5xl">
+                      {p.title}
+                    </h3>
+                    <span className="label">{p.kind}</span>
+                  </div>
+                  <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted text-pretty">{p.description}</p>
+                  <p className="mt-4 font-mono text-xs text-subtle">{p.tags.join("  ·  ")}</p>
+                </div>
+                <span className="inline-flex items-center gap-2 self-start text-sm text-muted transition-colors duration-200 group-hover:text-accent sm:pt-3">
+                  {p.linkLabel}
+                  <span className="grid h-10 w-10 place-items-center rounded-full border border-line transition-all duration-200 group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent">
+                    <FiArrowUpRight size={17} aria-hidden />
+                  </span>
+                </span>
+              </a>
+            </li>
           </Reveal>
         ))}
-      </div>
+      </ol>
     </Section>
   );
 }

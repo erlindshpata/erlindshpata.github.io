@@ -2,38 +2,35 @@ import { pipeline } from "../data/profile";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
+const spans = ["md:col-span-3", "md:col-span-3", "md:col-span-2", "md:col-span-2", "md:col-span-2"];
+
 export function Approach() {
   return (
     <Section
       id="approach"
-      index="03"
+      index="02"
       eyebrow="Approach"
       title={
         <>
-          From raw PDFs to grounded answers, <span className="text-muted">and every layer in between.</span>
+          From raw PDFs to <em className="text-accent">grounded answers</em>.
         </>
       }
-      intro="I own the whole path a question takes through ReN. Each stage is designed to hold up under production load."
+      intro="I own the whole path a question takes through ReN, and each stage is built for production load."
     >
-      <ol className="relative grid gap-4 md:grid-cols-5 md:gap-0">
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute left-0 right-0 top-[27px] hidden h-2 w-full text-accent/50 md:block"
-          preserveAspectRatio="none"
-          viewBox="0 0 100 2"
-        >
-          <line x1="10" y1="1" x2="90" y2="1" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" className="flow" />
-        </svg>
+      <ol className="grid gap-4 md:grid-cols-6">
         {pipeline.map((p, i) => (
-          <Reveal key={p.step} delay={i * 90}>
-            <li className="relative flex gap-4 md:flex-col md:items-center md:px-3 md:text-center">
-              <span className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-line bg-surface font-mono text-sm text-accent shadow-sm">
-                {p.step}
-              </span>
-              <div className="md:mt-5">
-                <h3 className="font-display text-xl font-semibold">{p.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{p.body}</p>
+          <Reveal key={p.step} delay={i * 70} className={`${spans[i]} h-full`}>
+            <li className="tile group relative flex h-full flex-col overflow-hidden p-7 transition-colors duration-200 hover:border-accent/50">
+              <div className="flex items-baseline justify-between">
+                <span className="font-serif text-6xl italic leading-none text-accent/90">{p.step}</span>
+                {i < pipeline.length - 1 && (
+                  <span aria-hidden className="font-mono text-xs text-subtle transition-transform duration-200 group-hover:translate-x-1">
+                    next →
+                  </span>
+                )}
               </div>
+              <h3 className="mt-8 font-serif text-3xl leading-none">{p.title}</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-muted">{p.body}</p>
             </li>
           </Reveal>
         ))}

@@ -6,24 +6,31 @@ export function Skills() {
   return (
     <Section
       id="stack"
-      index="02"
+      index="04"
       eyebrow="Stack"
-      title="The tools I reach for."
-      intro="Python is my primary language. I use Google Cloud for AI workloads and AWS for event-driven backends."
+      title={
+        <>
+          The <em className="text-accent">toolbox</em>.
+        </>
+      }
+      intro="Python first. Google Cloud for AI workloads, AWS for event-driven backends."
     >
-      <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+      <div className="grid border-t border-line sm:grid-cols-2 xl:grid-cols-4">
         {skillGroups.map((g, i) => (
-          <Reveal key={g.name} delay={i * 80} className="h-full">
-            <div className="h-full bg-bg p-6 md:p-8">
-              <h3 className="font-display text-lg font-semibold">{g.name}</h3>
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {g.items.map((item) => (
-                  <li key={item} className="chip">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <Reveal
+            key={g.name}
+            delay={i * 70}
+            className={`border-b border-line py-7 sm:px-6 ${i % 2 === 1 ? "sm:border-l" : ""} xl:border-l ${i === 0 ? "xl:border-l-0 xl:pl-0" : ""}`}
+          >
+            <h3 className="font-serif text-2xl">{g.name}</h3>
+            <ul className="mt-5 space-y-2">
+              {g.items.map((item) => (
+                <li key={item} className="flex items-center gap-3 text-[15px] text-muted">
+                  <span aria-hidden className="h-1 w-1 rounded-full bg-accent" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         ))}
       </div>
